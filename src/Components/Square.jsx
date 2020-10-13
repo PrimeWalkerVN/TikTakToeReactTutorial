@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const Square = (props) => {
   return (
@@ -9,6 +8,5 @@ const Square = (props) => {
   );
 };
 
-Square.propTypes = {};
 
 export default Square;
