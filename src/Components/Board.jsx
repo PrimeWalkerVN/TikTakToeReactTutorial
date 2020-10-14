@@ -2,29 +2,31 @@ import React from "react";
 import Square from "./Square";
 
 const Board = (props) => {
-  const { onClick, squares } = props;
+
+  const { onClick, squares, winningSquares } = props;
 
   const renderSquare = (i) => (
-    <Square value={squares[i]} onClick={() => onClick(i)} />
+    <Square isWinning={winningSquares.includes(i)} key={"square" + i} value={squares[i]} onClick={() => onClick(i)} />
   );
+  const renderSquares = (n) => {
+    let squares = [];
+    for (let i = n; i < n + 3; i++) {
+      squares.push(renderSquare(i));
+    }
+    return squares;
+  }
+
+  const renderRows = (i) => (
+    <div className="board-row">
+      {renderSquares(i)}
+    </div>
+  )
 
   return (
     <div>
-      <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
-      </div>
-      <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </div>
-      <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
-      </div>
+      {renderRows(0)}
+      {renderRows(3)}
+      {renderRows(6)}
     </div>
   );
 };

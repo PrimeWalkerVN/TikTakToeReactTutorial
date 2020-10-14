@@ -55,3 +55,8 @@ ul {
 .game-info {
     margin-left: 20px;
 }
+
+.square-winning {
+    background-color: yellow;
+    color: red;
+}
